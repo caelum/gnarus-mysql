@@ -6,6 +6,7 @@ import play.api.db._
 import anorm._
 import anorm.SqlParser._
 import play.api.Play.current
+import play.Play
 
 object MySQL {
   val logger = LoggerFactory.getLogger(classOf[MySQL])
@@ -22,7 +23,8 @@ class MySQL(val name:String) {
     case e => MySQL.logger.warn("user " + name + " já existe")
   }
 
-  val con = DriverManager.getConnection("jdbc:mysql://localhost/" + name, name, name)
+  val url = Play.application().configuration().getString("db.default.base_url")
+  val con = DriverManager.getConnection(url + name, name, name)
 
   def run(sql:String, filter:Boolean = false):Results = {
     if(filter && sql.contains(";")) {
