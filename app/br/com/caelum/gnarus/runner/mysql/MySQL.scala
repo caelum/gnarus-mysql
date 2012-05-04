@@ -12,7 +12,6 @@ object MySQL {
 }
 class MySQL(val name:String) {
   private val who = "`%s`@`localhost`".format(name)
-  val conAdmin = DriverManager.getConnection("jdbc:mysql://localhost/gnarus_runner","root","")
 
   runOnSession("drop database if exists " + name)
   runOnSession("create database " + name)
