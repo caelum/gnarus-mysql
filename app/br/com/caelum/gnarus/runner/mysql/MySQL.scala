@@ -24,7 +24,7 @@ class MySQL(val name:String) {
   }
 
   val url = Play.application().configuration().getString("db.default.base_url")
-  val con = DriverManager.getConnection(url + name, name, name)
+  val con = DriverManager.getConnection(url + "/"+ name, name, name)
 
   def run(sql:String, filter:Boolean = false):Results = {
     if(filter && sql.contains(";")) {
