@@ -45,7 +45,7 @@ Seq(format.raw/*1.88*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri May 04 17:05:31 BRT 2012
+                    DATE: Fri May 04 17:08:26 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/novo.scala.html
                     HASH: b9511edfae555cc101693cf67bff6ffdf05cbafb
                     MATRIX: 530->3|686->87|719->91|757->121|791->123|824->127|838->133|871->158|904->159|1027->252|1053->270|1080->276|1123->290|1137->296|1217->355|1251->360|1265->366|1377->456|1411->461|1425->467|1488->509|1607->597|1640->599
