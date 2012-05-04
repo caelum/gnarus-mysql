@@ -1,0 +1,27 @@
+@(exercise:Exercise,lastAttempt:Option[Attempt],returnUri:String)
+
+@main("Welcome to Play 2.0") {
+    <form action="@routes.SQLExecutor.execute(exercise.id)" method="post" id="executeForm">
+    	<input type="hidden" name="returnUri" value="@returnUri"/>    	
+    	<textarea name="sql" rows="5" cols="15" style="width:500px">@lastAttempt.map(_.query).getOrElse("")</textarea>
+    	<input type="button" id="execute" value="Executar query"/>
+    </form>
+    <script>
+     	$(function(){
+     		$("#execute").click(function(){
+     			var form = $("#executeForm");
+     			var uri = form.attr("action");
+     			$.post(uri,form.serialize(),
+     				   function(data){
+		     				var form = $('<form>');
+		     				form.attr({"action": "@returnUri", "method" : "get", "style":"display:none" });
+		     				var answer = $("<input type='text' name='answer'/>");
+		     				answer.attr("value",data.query);
+		     				answer.appendTo(form);
+		     				form.appendTo($("body"));
+		     				form.submit();  
+     			});
+     		});
+     	});
+    </script>
+ }

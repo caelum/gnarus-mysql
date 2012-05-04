@@ -1,0 +1,19 @@
+@(exercises:List[Exercise])
+@main("Listagem") {
+	<table>
+		<thead>			
+			<tr>
+				<th>id</th>
+				<th>content</th>
+			</tr>			
+		</thead>		
+		<tbody>
+			@exercises.map { exercise =>
+				<tr>
+					<th><a href="@routes.Exercises.load(exercise.id)">@exercise.id</a></th>
+					<th>@exercise.content</th>
+				</tr>
+			}
+		</tbody>
+	</table>
+}     

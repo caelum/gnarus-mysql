@@ -1,0 +1,14 @@
+  @(exerciseForm: Form[Exercise],whichAction:play.api.mvc.Call=routes.Exercises.create)
+  @main("Cadastro de exercicios") {
+  @helper.form(action=whichAction){
+	  <h1>Cadastre novo exercicio</h1>	  
+	  <br />
+	  <input type="hidden" name="id"  value="@exerciseForm("id").value"/>	  	  
+	  @helper.inputText(exerciseForm("content"),'style -> "width:500px")
+	  @helper.textarea(exerciseForm("queryValidator"),'style -> "width:500px",'rows -> 10, 'cols -> 10)
+	  @helper.inputText(exerciseForm("expectedResult"))	  	 	  
+	  <br/>
+	  <input type="submit" value="Cadastrar" class="botao" /> 
+  	  
+   }
+}     
