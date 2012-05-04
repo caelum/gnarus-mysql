@@ -37,7 +37,8 @@ object SQLExecutor extends Controller {
           case content => content
         }
         val attempt = Databases.mysql { (db) =>
-          db.run(baseSql)
+          val creationResults = db.run(baseSql)
+          println(creationResults+"==========")
           val results = db.run(actualSql.toUpperCase, true)
           currentExercise.newAttempt(results, db, User(userId),returnUri)
         }
