@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /$id<[0-9]+>                controllers.Application.index(id:Long)
+POST  	/execute/sql/:id			controllers.SQLExecutor.execute(id:Long)
+GET  	/exercise/form				controllers.Exercises.form
+POST 	/exercise					controllers.Exercises.create
+GET 	/exercise/:id				controllers.Exercises.load(id:Long)
+GET 	/exercise					controllers.Exercises.list
+POST 	/exercise/update			controllers.Exercises.update
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
