@@ -50,7 +50,7 @@ Seq(format.raw/*1.28*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri May 04 17:15:22 BRT 2012
+                    DATE: Fri May 04 17:18:46 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/list.scala.html
                     HASH: 0d1d581fc04c2bf92bc67fee344470664181d587
                     MATRIX: 512->1|610->27|641->29|665->45|699->47|836->154|854->163|867->167|914->181|974->210|989->216|1039->244|1073->247|1090->255|1115->258|1166->278|1183->286|1213->294|1264->314|1318->337
