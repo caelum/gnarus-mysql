@@ -37,10 +37,10 @@ Seq(format.raw/*1.66*/("""
      						console.log(data);
 		     				var form = $('<form>');
 		     				form.attr("""),format.raw("""{"""),format.raw/*18.23*/(""""action": """"),_display_(Seq(/*18.35*/returnUri)),format.raw/*18.44*/("""", "method" : "get", "style":"display:none" """),format.raw("""}"""),format.raw/*18.89*/(""");
-		     				var answer = $("<input type='hidden' name='answer'/>");		     				
+		     				var answer = $("<input type='text' name='answer'/>");		     				
 		     				answer.attr("value",data.query);
 		     				answer.appendTo(form);
-		     				var correctness = $("<input type='hidden' name='correctness'/>");
+		     				var correctness = $("<input type='text' name='correctness'/>");
 		     				correctness.attr("value",data.correctness)
 		     				correctness.appendTo(form)
 		     				form.appendTo($("body"));
@@ -61,10 +61,10 @@ Seq(format.raw/*1.66*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat May 05 12:09:37 BRT 2012
+                    DATE: Sat May 05 12:18:31 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/index.scala.html
-                    HASH: 3432cd0e9b48639424c6cd8feb564797683c652e
-                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1000->241|1030->250|1135->325|1154->336|1203->363|1370->483|1456->522|1645->664|1780->752|1823->764|1854->773|1946->818|2395->1220|2452->1231|2508->1241
+                    HASH: 9122592119093b8e2d698b5737c37fe32251645d
+                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1000->241|1030->250|1135->325|1154->336|1203->363|1370->483|1456->522|1645->664|1780->752|1823->764|1854->773|1946->818|2391->1216|2448->1227|2504->1237
                     LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|26->5|26->5|27->6|27->6|27->6|31->10|32->11|36->15|39->18|39->18|39->18|39->18|48->27|49->28|50->29
                     -- GENERATED --
                 */

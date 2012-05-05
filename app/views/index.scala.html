@@ -16,10 +16,10 @@
      						console.log(data);
 		     				var form = $('<form>');
 		     				form.attr({"action": "@returnUri", "method" : "get", "style":"display:none" });
-		     				var answer = $("<input type='hidden' name='answer'/>");		     				
+		     				var answer = $("<input type='text' name='answer'/>");		     				
 		     				answer.attr("value",data.query);
 		     				answer.appendTo(form);
-		     				var correctness = $("<input type='hidden' name='correctness'/>");
+		     				var correctness = $("<input type='text' name='correctness'/>");
 		     				correctness.attr("value",data.correctness)
 		     				correctness.appendTo(form)
 		     				form.appendTo($("body"));
