@@ -13,11 +13,15 @@
      			var uri = form.attr("action");
      			$.post(uri,form.serialize(),
      				   function(data){
+     						console.log(data);
 		     				var form = $('<form>');
 		     				form.attr({"action": "@returnUri", "method" : "get", "style":"display:none" });
-		     				var answer = $("<input type='text' name='answer'/>");
+		     				var answer = $("<input type='hidden' name='answer'/>");		     				
 		     				answer.attr("value",data.query);
 		     				answer.appendTo(form);
+		     				var correctness = $("<input type='hidden' name='correctness'/>");
+		     				correctness.attr("value",data.correctness)
+		     				correctness.appendTo(form)
 		     				form.appendTo($("body"));
 		     				form.submit();  
      			});

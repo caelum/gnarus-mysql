@@ -12,19 +12,10 @@ object MySQL {
   val logger = LoggerFactory.getLogger(classOf[MySQL])
 }
 class MySQL(val name:String) {
-  private val who = "`%s`@`localhost`".format(name)
-
-  runOnSession("drop database if exists " + name)
-  runOnSession("create database " + name)
-  try {
-    runOnSession("create user %s identified by '%s'".format(who, name))
-    runOnSession("grant create,delete,index,insert,select,update,alter on `%s`.* to %s".format(name, who))
-  } catch {
-    case e => MySQL.logger.warn("user " + name + " já existe")
-  }
-
-  val url = Play.application().configuration().getString("db.default.base_url")
-  val con = DriverManager.getConnection(url + "/"+ name, name, name)
+  val url = Play.application().configuration().getString("db.default.url")
+  val login = Play.application().configuration().getString("db.default.user")
+  val pwd = Play.application().configuration().getString("db.default.password")
+  val con = DriverManager.getConnection(url, login, pwd)
 
   def run(sql:String, filter:Boolean = false):Results = {
     if(filter && sql.contains(";")) {
@@ -41,30 +32,36 @@ class MySQL(val name:String) {
     DB.withTransaction {implicit c => SQL(sql).executeUpdate()}    
   }
 
-  def runThisGuy(sql:String, filter:Boolean):Results= {
+  def runThisGuy(originalSql:String, filter:Boolean):Results= {
+    val parsedSql = asUserTable(originalSql)
     val result:Results = try {
-      val check = sql.toLowerCase.trim
+      val check = parsedSql.toLowerCase.trim
       if(filter && check.contains("drop")) {
-        MySQL.logger.info("quitting a drop operation '" + sql + "'")
+        MySQL.logger.info("quitting a drop operation '" + parsedSql + "'")
         new ExceptionResults(new SQLException("Unsupported operation 'drop'"))
       } else if(check.startsWith("select")) {
-        MySQL.logger.info("ready to execute '" + sql + "'")
-        new SetResults(statement.executeQuery(sql))
+        MySQL.logger.info("ready to execute '" + parsedSql + "'")
+        new SetResults(statement.executeQuery(parsedSql))
       } else if(!filter || check.startsWith("insert") || check.startsWith("update") || check.startsWith("delete") || check.startsWith("alter") || check.startsWith("create")) {
-        MySQL.logger.info("ready to execute '" + sql + "'")
-        new UpdateResults(statement.executeUpdate(sql), new SetResults(statement.executeQuery("select * from COMPRAS")))
+        MySQL.logger.info("ready to execute '" + parsedSql + "'")
+        new UpdateResults(statement.executeUpdate(parsedSql), new SetResults(statement.executeQuery(asUserTable("select * from COMPRAS"))))
       } else {
-        MySQL.logger.info("unsupported operation '" + sql + "'")
-        new ExceptionResults(new SQLException("Unsupported operation '" + sql + "'"))
+        MySQL.logger.info("unsupported operation '" + parsedSql + "'")
+        new ExceptionResults(new SQLException("Unsupported operation '" + parsedSql + "'"))
       }
     } catch {
       case ex:SQLException => {
        new ExceptionResults(ex) 
       }
     }    
-    result.sql = sql
+    result.sql = originalSql
     result
   }
+  
+  def asUserTable(query:String):String = {
+    query.toUpperCase().replace("COMPRAS","COMPRAS_"+name).replace("CONTAS","CONTAS_"+name)    
+  }
+  
   def statement = {
     val st = con.createStatement()
     st.setQueryTimeout(5)
@@ -75,8 +72,8 @@ class MySQL(val name:String) {
   def close() {
     try {
       con.close()
-      runOnSession("drop database if exists " + name)
-      runOnSession("drop user " + who)
+      runOnSession(asUserTable("drop table if exists COMPRAS"))
+      runOnSession(asUserTable("drop table if exists CONTAS"))
     } catch {
       case ex:Exception => ex.printStackTrace
     }

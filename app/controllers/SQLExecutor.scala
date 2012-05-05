@@ -38,12 +38,11 @@ object SQLExecutor extends Controller {
         }
         val attempt = Databases.mysql { (db) =>
           val creationResults = db.run(baseSql)
-          println(creationResults+"==========")
           val results = db.run(actualSql.toUpperCase, true)
           currentExercise.newAttempt(results, db, User(userId),returnUri)
         }
         Ok(Json.toJson(
-        	Map("query" -> attempt.query,"userId" -> attempt.user.id.toString)
+        	Map("query" -> attempt.query,"userId" -> attempt.user.id.toString, "correctness" -> (if(attempt.correct) 100 else 0).toString)
            ))
       }
       case None => BadRequest("nao passou o sql")

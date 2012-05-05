@@ -34,16 +34,20 @@ Seq(format.raw/*1.66*/("""
      			var uri = form.attr("action");
      			$.post(uri,form.serialize(),
      				   function(data)"""),format.raw("""{"""),format.raw/*15.28*/("""
+     						console.log(data);
 		     				var form = $('<form>');
-		     				form.attr("""),format.raw("""{"""),format.raw/*17.23*/(""""action": """"),_display_(Seq(/*17.35*/returnUri)),format.raw/*17.44*/("""", "method" : "get", "style":"display:none" """),format.raw("""}"""),format.raw/*17.89*/(""");
-		     				var answer = $("<input type='text' name='answer'/>");
+		     				form.attr("""),format.raw("""{"""),format.raw/*18.23*/(""""action": """"),_display_(Seq(/*18.35*/returnUri)),format.raw/*18.44*/("""", "method" : "get", "style":"display:none" """),format.raw("""}"""),format.raw/*18.89*/(""");
+		     				var answer = $("<input type='hidden' name='answer'/>");		     				
 		     				answer.attr("value",data.query);
 		     				answer.appendTo(form);
+		     				var correctness = $("<input type='hidden' name='correctness'/>");
+		     				correctness.attr("value",data.correctness)
+		     				correctness.appendTo(form)
 		     				form.appendTo($("body"));
 		     				form.submit();  
-     			"""),format.raw("""}"""),format.raw/*23.10*/(""");
-     		"""),format.raw("""}"""),format.raw/*24.9*/(""");
-     	"""),format.raw("""}"""),format.raw/*25.8*/(""");
+     			"""),format.raw("""}"""),format.raw/*27.10*/(""");
+     		"""),format.raw("""}"""),format.raw/*28.9*/(""");
+     	"""),format.raw("""}"""),format.raw/*29.8*/(""");
     </script>
  """)))})))}
     }
@@ -57,11 +61,11 @@ Seq(format.raw/*1.66*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri May 04 17:47:19 BRT 2012
+                    DATE: Fri May 04 22:18:07 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/index.scala.html
-                    HASH: 9d39c184c5b5acd8f6d0970f7cb9533dfdfc7f1c
-                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1000->241|1030->250|1135->325|1154->336|1203->363|1370->483|1456->522|1645->664|1750->722|1793->734|1824->743|1916->788|2183->1008|2240->1019|2296->1029
-                    LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|26->5|26->5|27->6|27->6|27->6|31->10|32->11|36->15|38->17|38->17|38->17|38->17|44->23|45->24|46->25
+                    HASH: 3432cd0e9b48639424c6cd8feb564797683c652e
+                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1000->241|1030->250|1135->325|1154->336|1203->363|1370->483|1456->522|1645->664|1780->752|1823->764|1854->773|1946->818|2395->1220|2452->1231|2508->1241
+                    LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|26->5|26->5|27->6|27->6|27->6|31->10|32->11|36->15|39->18|39->18|39->18|39->18|48->27|49->28|50->29
                     -- GENERATED --
                 */
             
