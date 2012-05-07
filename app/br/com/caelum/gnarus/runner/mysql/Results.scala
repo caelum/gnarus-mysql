@@ -5,15 +5,19 @@ import collection.mutable.ListBuffer
 import scala.collection.JavaConversions._
 import java.util.{ArrayList, List}
 
-class SetResults(val rs:ResultSet) extends Results {
+case class ColumnAndValue(name:String,value:String)
 
+class SetResults(val rs:ResultSet) extends Results {
+  
+  private type Record = List[ColumnAndValue]
+  
   private val columns = rs.getMetaData.getColumnCount
 
-  val lines:List[List[String]] = {
-    val list = ListBuffer[List[String]]()
+  val lines:List[Record] = {
+    val list = ListBuffer[Record]()
     while(rs.next()) {
-      val line = for( i <- 1 to columns) yield rs.getString(i)
-      list += new ArrayList(line)
+      val line = for( i <- 1 to columns) yield ColumnAndValue(rs.getMetaData().getColumnName(i),rs.getString(i))
+      list += new ArrayList(line.sortBy(_.name))
     }
     new ArrayList(list)
   }

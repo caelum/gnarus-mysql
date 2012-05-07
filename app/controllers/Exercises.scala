@@ -86,7 +86,7 @@ object Exercises extends Controller with Secured {
         val count = Databases.mysql { db =>
           db.run(SQLExecutor.baseSql)
           val countResult = db.run(query).asInstanceOf[SetResults]
-          countResult.lines.get(0).get(0).toInt
+          countResult.lines.get(0).get(0).value.toInt
         }
         Ok(Json.toJson(
           Map("count" -> count)))
