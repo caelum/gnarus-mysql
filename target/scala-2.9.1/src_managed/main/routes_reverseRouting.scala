@@ -1,6 +1,6 @@
 // @SOURCE:/Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/conf/routes
-// @HASH:9885006f0fa95083c6aec534371c3a037ef0a582
-// @DATE:Sun May 06 20:20:08 BRT 2012
+// @HASH:d2b3be36712138ecd6511fc2a6fe3c76e16ae40b
+// @DATE:Mon May 07 15:06:14 BRT 2012
 
 import play.core._
 import play.core.Router._
@@ -12,7 +12,10 @@ import play.api.mvc._
 import Router.queryString
 
 
+// @LINE:19
 // @LINE:16
+// @LINE:15
+// @LINE:14
 // @LINE:13
 // @LINE:12
 // @LINE:11
@@ -23,49 +26,46 @@ import Router.queryString
 // @LINE:6
 package controllers {
 
-// @LINE:7
-class ReverseSQLExecutor {
-    
-
-
- 
-// @LINE:7
-def execute(id:Long) = {
-   Call("POST", "/execute/sql/" + implicitly[PathBindable[Long]].unbind("id", id))
-}
-                                                        
-
-                      
-    
-}
-                            
-
-// @LINE:6
-class ReverseApplication {
-    
-
-
- 
-// @LINE:6
-def index(id:Long) = {
-   Call("GET", "/" + implicitly[PathBindable[Long]].unbind("id", id))
-}
-                                                        
-
-                      
-    
-}
-                            
-
-// @LINE:16
+// @LINE:19
 class ReverseAssets {
     
 
 
  
-// @LINE:16
+// @LINE:19
 def at(file:String) = {
    Call("GET", "/assets/" + implicitly[PathBindable[String]].unbind("file", file))
+}
+                                                        
+
+                      
+    
+}
+                            
+
+// @LINE:16
+// @LINE:15
+// @LINE:14
+class ReverseAuthentication {
+    
+
+
+ 
+// @LINE:15
+def authenticate() = {
+   Call("POST", "/authenticate")
+}
+                                                        
+ 
+// @LINE:16
+def logout() = {
+   Call("GET", "/authenticate/logout")
+}
+                                                        
+ 
+// @LINE:14
+def login() = {
+   Call("GET", "/authenticate")
 }
                                                         
 
@@ -125,11 +125,48 @@ def list() = {
     
 }
                             
+
+// @LINE:6
+class ReverseApplication {
+    
+
+
+ 
+// @LINE:6
+def index(id:Long) = {
+   Call("GET", "/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                        
+
+                      
+    
+}
+                            
+
+// @LINE:7
+class ReverseSQLExecutor {
+    
+
+
+ 
+// @LINE:7
+def execute(id:Long) = {
+   Call("POST", "/execute/sql/" + implicitly[PathBindable[Long]].unbind("id", id))
+}
+                                                        
+
+                      
+    
+}
+                            
 }
                     
 
 
+// @LINE:19
 // @LINE:16
+// @LINE:15
+// @LINE:14
 // @LINE:13
 // @LINE:12
 // @LINE:11
@@ -140,62 +177,64 @@ def list() = {
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:7
-class ReverseSQLExecutor {
-    
-
-
- 
-// @LINE:7
-def execute = JavascriptReverseRoute(
-   "controllers.SQLExecutor.execute",
-   """
-      function(id) {
-      return _wA({method:"POST", url:"/execute/sql/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
-      }
-   """
-)
-                                                        
-
-                      
-    
-}
-                            
-
-// @LINE:6
-class ReverseApplication {
-    
-
-
- 
-// @LINE:6
-def index = JavascriptReverseRoute(
-   "controllers.Application.index",
-   """
-      function(id) {
-      return _wA({method:"GET", url:"/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
-      }
-   """
-)
-                                                        
-
-                      
-    
-}
-                            
-
-// @LINE:16
+// @LINE:19
 class ReverseAssets {
     
 
 
  
-// @LINE:16
+// @LINE:19
 def at = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
       function(file) {
       return _wA({method:"GET", url:"/assets/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("file", file)})
+      }
+   """
+)
+                                                        
+
+                      
+    
+}
+                            
+
+// @LINE:16
+// @LINE:15
+// @LINE:14
+class ReverseAuthentication {
+    
+
+
+ 
+// @LINE:15
+def authenticate = JavascriptReverseRoute(
+   "controllers.Authentication.authenticate",
+   """
+      function() {
+      return _wA({method:"POST", url:"/authenticate"})
+      }
+   """
+)
+                                                        
+ 
+// @LINE:16
+def logout = JavascriptReverseRoute(
+   "controllers.Authentication.logout",
+   """
+      function() {
+      return _wA({method:"GET", url:"/authenticate/logout"})
+      }
+   """
+)
+                                                        
+ 
+// @LINE:14
+def login = JavascriptReverseRoute(
+   "controllers.Authentication.login",
+   """
+      function() {
+      return _wA({method:"GET", url:"/authenticate"})
       }
    """
 )
@@ -287,11 +326,58 @@ def list = JavascriptReverseRoute(
     
 }
                             
+
+// @LINE:6
+class ReverseApplication {
+    
+
+
+ 
+// @LINE:6
+def index = JavascriptReverseRoute(
+   "controllers.Application.index",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                                                        
+
+                      
+    
+}
+                            
+
+// @LINE:7
+class ReverseSQLExecutor {
+    
+
+
+ 
+// @LINE:7
+def execute = JavascriptReverseRoute(
+   "controllers.SQLExecutor.execute",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"/execute/sql/" + (""" + implicitly[PathBindable[Long]].javascriptUnbind + """)("id", id)})
+      }
+   """
+)
+                                                        
+
+                      
+    
+}
+                            
 }
                     
 
 
+// @LINE:19
 // @LINE:16
+// @LINE:15
+// @LINE:14
 // @LINE:13
 // @LINE:12
 // @LINE:11
@@ -302,49 +388,46 @@ def list = JavascriptReverseRoute(
 // @LINE:6
 package controllers.ref {
 
-// @LINE:7
-class ReverseSQLExecutor {
-    
-
-
- 
-// @LINE:7
-def execute(id:Long) = new play.api.mvc.HandlerRef(
-   controllers.SQLExecutor.execute(id), HandlerDef(this, "controllers.SQLExecutor", "execute", Seq(classOf[Long]))
-)
-                              
-
-                      
-    
-}
-                            
-
-// @LINE:6
-class ReverseApplication {
-    
-
-
- 
-// @LINE:6
-def index(id:Long) = new play.api.mvc.HandlerRef(
-   controllers.Application.index(id), HandlerDef(this, "controllers.Application", "index", Seq(classOf[Long]))
-)
-                              
-
-                      
-    
-}
-                            
-
-// @LINE:16
+// @LINE:19
 class ReverseAssets {
     
 
 
  
-// @LINE:16
+// @LINE:19
 def at(path:String, file:String) = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]))
+)
+                              
+
+                      
+    
+}
+                            
+
+// @LINE:16
+// @LINE:15
+// @LINE:14
+class ReverseAuthentication {
+    
+
+
+ 
+// @LINE:15
+def authenticate() = new play.api.mvc.HandlerRef(
+   controllers.Authentication.authenticate(), HandlerDef(this, "controllers.Authentication", "authenticate", Seq())
+)
+                              
+ 
+// @LINE:16
+def logout() = new play.api.mvc.HandlerRef(
+   controllers.Authentication.logout(), HandlerDef(this, "controllers.Authentication", "logout", Seq())
+)
+                              
+ 
+// @LINE:14
+def login() = new play.api.mvc.HandlerRef(
+   controllers.Authentication.login(), HandlerDef(this, "controllers.Authentication", "login", Seq())
 )
                               
 
@@ -397,6 +480,40 @@ def load(id:Long) = new play.api.mvc.HandlerRef(
 // @LINE:11
 def list() = new play.api.mvc.HandlerRef(
    controllers.Exercises.list(), HandlerDef(this, "controllers.Exercises", "list", Seq())
+)
+                              
+
+                      
+    
+}
+                            
+
+// @LINE:6
+class ReverseApplication {
+    
+
+
+ 
+// @LINE:6
+def index(id:Long) = new play.api.mvc.HandlerRef(
+   controllers.Application.index(id), HandlerDef(this, "controllers.Application", "index", Seq(classOf[Long]))
+)
+                              
+
+                      
+    
+}
+                            
+
+// @LINE:7
+class ReverseSQLExecutor {
+    
+
+
+ 
+// @LINE:7
+def execute(id:Long) = new play.api.mvc.HandlerRef(
+   controllers.SQLExecutor.execute(id), HandlerDef(this, "controllers.SQLExecutor", "execute", Seq(classOf[Long]))
 )
                               
 

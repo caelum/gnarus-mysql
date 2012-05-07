@@ -1,0 +1,10 @@
+  @(loginForm: Form[SystemUser])
+  @main("Faça seu login") {
+  @helper.form(action=routes.Authentication.authenticate){	  	 
+	  @helper.inputText(loginForm("login"))
+	  @helper.inputPassword(loginForm("password"))	  	 	  
+	  <br/>
+	  <input type="submit" value="Logar"/>   	  
+   }
+
+}     

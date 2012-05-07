@@ -12,7 +12,6 @@ import br.com.caelum.gnarus.runner.mysql.MySQL
 import br.com.caelum.gnarus.runner.mysql.Databases
 import br.com.caelum.gnarus.runner.mysql.SetResults
 
-
 //@Validations({
 // V.Produto.noBeanValidatio,
 // V.Produto.nome.required,
@@ -39,53 +38,48 @@ import br.com.caelum.gnarus.runner.mysql.SetResults
 //  };
 //}
 
-object Exercises extends Controller {
+object Exercises extends Controller with Secured {
 
   val exerciseForm = Form(
-      mapping(
-    	"id" -> optional(longNumber),
-    	"content" -> text,
-    	"queryValidator" -> text,
-    	"expectedResult" -> optional(number)
-      )(          
-          Exercise.apply         
-      )(
-    	  Exercise.unapply
-      )
-  )
-   
+    mapping(
+      "id" -> optional(longNumber),
+      "content" -> text,
+      "queryValidator" -> text,
+      "expectedResult" -> optional(number))(
+        Exercise.apply)(
+          Exercise.unapply))
 
-  def form = Action {
-    Ok(views.html.novo(exerciseForm))
+  def form = withAuth { implicit request =>
+      Ok(views.html.novo(exerciseForm))
   }
 
-  def load(id: Long) = Action {
-    val loadedExercise = ExerciseDAO.load(id)    
+  def load(id: Long) = withAuth { implicit request =>
+    val loadedExercise = ExerciseDAO.load(id)
     val filledForm = exerciseForm.fill(loadedExercise)
-    Ok(views.html.novo(filledForm,routes.Exercises.update))
+    Ok(views.html.novo(filledForm, routes.Exercises.update))
   }
 
-  def update = Action { implicit c =>    
+  def update = withAuth { implicit request =>
     exerciseForm.bindFromRequest.fold(errors => BadRequest(views.html.novo(errors)),
       updatedExercise => {
         ExerciseDAO.update(updatedExercise)
         Redirect(routes.Exercises.list())
       })
   }
-  
-  def list = Action {   
+
+  def list = withAuth { implicit request =>
     Ok(views.html.list(ExerciseDAO.all))
   }
 
-  def create = Action { implicit request =>
+  def create = withAuth { implicit request =>
     exerciseForm.bindFromRequest.fold(errors => BadRequest(views.html.novo(errors)),
       newExercise => {
         ExerciseDAO.save(newExercise)
         Redirect(routes.Exercises.list())
       })
   }
-  
-  def countQuery = Action { implicit request =>
+
+  def countQuery = withAuth { implicit request =>
     request.body.asFormUrlEncoded match {
       case Some(params) => {
         val query = params.get("query").get(0)
@@ -95,11 +89,10 @@ object Exercises extends Controller {
           countResult.lines.get(0).get(0).toInt
         }
         Ok(Json.toJson(
-        	Map("count" -> count)
-         ))        
+          Map("count" -> count)))
       }
       case _ => BadRequest("nao passou o count")
     }
-    
+
   }
 }

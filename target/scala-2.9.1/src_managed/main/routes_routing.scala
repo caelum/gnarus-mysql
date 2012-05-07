@@ -1,6 +1,6 @@
 // @SOURCE:/Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/conf/routes
-// @HASH:9885006f0fa95083c6aec534371c3a037ef0a582
-// @DATE:Sun May 06 20:20:08 BRT 2012
+// @HASH:d2b3be36712138ecd6511fc2a6fe3c76e16ae40b
+// @DATE:Mon May 07 15:06:14 BRT 2012
 
 import play.core._
 import play.core.Router._
@@ -46,10 +46,22 @@ val controllers_Exercises_update6 = Route("POST", PathPattern(List(StaticPart("/
 val controllers_Exercises_countQuery7 = Route("POST", PathPattern(List(StaticPart("/exercise/countQuery"))))
                     
 
-// @LINE:16
-val controllers_Assets_at8 = Route("GET", PathPattern(List(StaticPart("/assets/"),DynamicPart("file", """.+"""))))
+// @LINE:14
+val controllers_Authentication_login8 = Route("GET", PathPattern(List(StaticPart("/authenticate"))))
                     
-def documentation = List(("""GET""","""/$id<[0-9]+>""","""controllers.Application.index(id:Long)"""),("""POST""","""/execute/sql/$id<[^/]+>""","""controllers.SQLExecutor.execute(id:Long)"""),("""GET""","""/exercise/form""","""controllers.Exercises.form"""),("""POST""","""/exercise""","""controllers.Exercises.create"""),("""GET""","""/exercise/$id<[^/]+>""","""controllers.Exercises.load(id:Long)"""),("""GET""","""/exercise""","""controllers.Exercises.list"""),("""POST""","""/exercise/update""","""controllers.Exercises.update"""),("""POST""","""/exercise/countQuery""","""controllers.Exercises.countQuery"""),("""GET""","""/assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""))
+
+// @LINE:15
+val controllers_Authentication_authenticate9 = Route("POST", PathPattern(List(StaticPart("/authenticate"))))
+                    
+
+// @LINE:16
+val controllers_Authentication_logout10 = Route("GET", PathPattern(List(StaticPart("/authenticate/logout"))))
+                    
+
+// @LINE:19
+val controllers_Assets_at11 = Route("GET", PathPattern(List(StaticPart("/assets/"),DynamicPart("file", """.+"""))))
+                    
+def documentation = List(("""GET""","""/$id<[0-9]+>""","""controllers.Application.index(id:Long)"""),("""POST""","""/execute/sql/$id<[^/]+>""","""controllers.SQLExecutor.execute(id:Long)"""),("""GET""","""/exercise/form""","""controllers.Exercises.form"""),("""POST""","""/exercise""","""controllers.Exercises.create"""),("""GET""","""/exercise/$id<[^/]+>""","""controllers.Exercises.load(id:Long)"""),("""GET""","""/exercise""","""controllers.Exercises.list"""),("""POST""","""/exercise/update""","""controllers.Exercises.update"""),("""POST""","""/exercise/countQuery""","""controllers.Exercises.countQuery"""),("""GET""","""/authenticate""","""controllers.Authentication.login"""),("""POST""","""/authenticate""","""controllers.Authentication.authenticate"""),("""GET""","""/authenticate/logout""","""controllers.Authentication.logout"""),("""GET""","""/assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""))
              
     
 def routes:PartialFunction[RequestHeader,Handler] = {        
@@ -118,8 +130,32 @@ case controllers_Exercises_countQuery7(params) => {
 }
                     
 
+// @LINE:14
+case controllers_Authentication_login8(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Authentication.login, HandlerDef(this, "controllers.Authentication", "login", Nil))
+   }
+}
+                    
+
+// @LINE:15
+case controllers_Authentication_authenticate9(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Authentication.authenticate, HandlerDef(this, "controllers.Authentication", "authenticate", Nil))
+   }
+}
+                    
+
 // @LINE:16
-case controllers_Assets_at8(params) => {
+case controllers_Authentication_logout10(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Authentication.logout, HandlerDef(this, "controllers.Authentication", "logout", Nil))
+   }
+}
+                    
+
+// @LINE:19
+case controllers_Assets_at11(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
         invokeHandler(_root_.controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String])))
    }
