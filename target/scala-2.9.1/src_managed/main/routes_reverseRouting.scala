@@ -1,6 +1,6 @@
 // @SOURCE:/Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/conf/routes
-// @HASH:97001a82a85749afb2a74a4f6ed139ded0edca0f
-// @DATE:Sat May 05 12:18:28 BRT 2012
+// @HASH:9885006f0fa95083c6aec534371c3a037ef0a582
+// @DATE:Sun May 06 20:20:08 BRT 2012
 
 import play.core._
 import play.core.Router._
@@ -12,7 +12,8 @@ import play.api.mvc._
 import Router.queryString
 
 
-// @LINE:15
+// @LINE:16
+// @LINE:13
 // @LINE:12
 // @LINE:11
 // @LINE:10
@@ -56,13 +57,13 @@ def index(id:Long) = {
 }
                             
 
-// @LINE:15
+// @LINE:16
 class ReverseAssets {
     
 
 
  
-// @LINE:15
+// @LINE:16
 def at(file:String) = {
    Call("GET", "/assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -73,6 +74,7 @@ def at(file:String) = {
 }
                             
 
+// @LINE:13
 // @LINE:12
 // @LINE:11
 // @LINE:10
@@ -82,6 +84,12 @@ class ReverseExercises {
     
 
 
+ 
+// @LINE:13
+def countQuery() = {
+   Call("POST", "/exercise/countQuery")
+}
+                                                        
  
 // @LINE:12
 def update() = {
@@ -121,7 +129,8 @@ def list() = {
                     
 
 
-// @LINE:15
+// @LINE:16
+// @LINE:13
 // @LINE:12
 // @LINE:11
 // @LINE:10
@@ -175,13 +184,13 @@ def index = JavascriptReverseRoute(
 }
                             
 
-// @LINE:15
+// @LINE:16
 class ReverseAssets {
     
 
 
  
-// @LINE:15
+// @LINE:16
 def at = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -197,6 +206,7 @@ def at = JavascriptReverseRoute(
 }
                             
 
+// @LINE:13
 // @LINE:12
 // @LINE:11
 // @LINE:10
@@ -206,6 +216,17 @@ class ReverseExercises {
     
 
 
+ 
+// @LINE:13
+def countQuery = JavascriptReverseRoute(
+   "controllers.Exercises.countQuery",
+   """
+      function() {
+      return _wA({method:"POST", url:"/exercise/countQuery"})
+      }
+   """
+)
+                                                        
  
 // @LINE:12
 def update = JavascriptReverseRoute(
@@ -270,7 +291,8 @@ def list = JavascriptReverseRoute(
                     
 
 
-// @LINE:15
+// @LINE:16
+// @LINE:13
 // @LINE:12
 // @LINE:11
 // @LINE:10
@@ -314,13 +336,13 @@ def index(id:Long) = new play.api.mvc.HandlerRef(
 }
                             
 
-// @LINE:15
+// @LINE:16
 class ReverseAssets {
     
 
 
  
-// @LINE:15
+// @LINE:16
 def at(path:String, file:String) = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]))
 )
@@ -331,6 +353,7 @@ def at(path:String, file:String) = new play.api.mvc.HandlerRef(
 }
                             
 
+// @LINE:13
 // @LINE:12
 // @LINE:11
 // @LINE:10
@@ -340,6 +363,12 @@ class ReverseExercises {
     
 
 
+ 
+// @LINE:13
+def countQuery() = new play.api.mvc.HandlerRef(
+   controllers.Exercises.countQuery(), HandlerDef(this, "controllers.Exercises", "countQuery", Seq())
+)
+                              
  
 // @LINE:12
 def update() = new play.api.mvc.HandlerRef(

@@ -1,6 +1,6 @@
 // @SOURCE:/Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/conf/routes
-// @HASH:97001a82a85749afb2a74a4f6ed139ded0edca0f
-// @DATE:Sat May 05 12:18:28 BRT 2012
+// @HASH:9885006f0fa95083c6aec534371c3a037ef0a582
+// @DATE:Sun May 06 20:20:08 BRT 2012
 
 import play.core._
 import play.core.Router._
@@ -42,10 +42,14 @@ val controllers_Exercises_list5 = Route("GET", PathPattern(List(StaticPart("/exe
 val controllers_Exercises_update6 = Route("POST", PathPattern(List(StaticPart("/exercise/update"))))
                     
 
-// @LINE:15
-val controllers_Assets_at7 = Route("GET", PathPattern(List(StaticPart("/assets/"),DynamicPart("file", """.+"""))))
+// @LINE:13
+val controllers_Exercises_countQuery7 = Route("POST", PathPattern(List(StaticPart("/exercise/countQuery"))))
                     
-def documentation = List(("""GET""","""/$id<[0-9]+>""","""controllers.Application.index(id:Long)"""),("""POST""","""/execute/sql/$id<[^/]+>""","""controllers.SQLExecutor.execute(id:Long)"""),("""GET""","""/exercise/form""","""controllers.Exercises.form"""),("""POST""","""/exercise""","""controllers.Exercises.create"""),("""GET""","""/exercise/$id<[^/]+>""","""controllers.Exercises.load(id:Long)"""),("""GET""","""/exercise""","""controllers.Exercises.list"""),("""POST""","""/exercise/update""","""controllers.Exercises.update"""),("""GET""","""/assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""))
+
+// @LINE:16
+val controllers_Assets_at8 = Route("GET", PathPattern(List(StaticPart("/assets/"),DynamicPart("file", """.+"""))))
+                    
+def documentation = List(("""GET""","""/$id<[0-9]+>""","""controllers.Application.index(id:Long)"""),("""POST""","""/execute/sql/$id<[^/]+>""","""controllers.SQLExecutor.execute(id:Long)"""),("""GET""","""/exercise/form""","""controllers.Exercises.form"""),("""POST""","""/exercise""","""controllers.Exercises.create"""),("""GET""","""/exercise/$id<[^/]+>""","""controllers.Exercises.load(id:Long)"""),("""GET""","""/exercise""","""controllers.Exercises.list"""),("""POST""","""/exercise/update""","""controllers.Exercises.update"""),("""POST""","""/exercise/countQuery""","""controllers.Exercises.countQuery"""),("""GET""","""/assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)"""))
              
     
 def routes:PartialFunction[RequestHeader,Handler] = {        
@@ -106,8 +110,16 @@ case controllers_Exercises_update6(params) => {
 }
                     
 
-// @LINE:15
-case controllers_Assets_at7(params) => {
+// @LINE:13
+case controllers_Exercises_countQuery7(params) => {
+   call { 
+        invokeHandler(_root_.controllers.Exercises.countQuery, HandlerDef(this, "controllers.Exercises", "countQuery", Nil))
+   }
+}
+                    
+
+// @LINE:16
+case controllers_Assets_at8(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
         invokeHandler(_root_.controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String])))
    }

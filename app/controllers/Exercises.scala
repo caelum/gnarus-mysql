@@ -5,6 +5,13 @@ import play.api.data._
 import play.api.data.Forms._
 import models.{ Exercise, ExerciseDAO }
 import models.Exercise
+import play.api.Play.current
+import play.api.libs.json
+import play.api.libs.json.Json
+import br.com.caelum.gnarus.runner.mysql.MySQL
+import br.com.caelum.gnarus.runner.mysql.Databases
+import br.com.caelum.gnarus.runner.mysql.SetResults
+
 
 //@Validations({
 // V.Produto.noBeanValidatio,
@@ -76,5 +83,23 @@ object Exercises extends Controller {
         ExerciseDAO.save(newExercise)
         Redirect(routes.Exercises.list())
       })
+  }
+  
+  def countQuery = Action { implicit request =>
+    request.body.asFormUrlEncoded match {
+      case Some(params) => {
+        val query = params.get("query").get(0)
+        val count = Databases.mysql { db =>
+          db.run(SQLExecutor.baseSql)
+          val countResult = db.run(query).asInstanceOf[SetResults]
+          countResult.lines.get(0).get(0).toInt
+        }
+        Ok(Json.toJson(
+        	Map("count" -> count)
+         ))        
+      }
+      case _ => BadRequest("nao passou o count")
+    }
+    
   }
 }

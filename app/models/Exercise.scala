@@ -21,7 +21,6 @@ case class Exercise(optionalId:Option[Long],val content:String,val queryValidato
   
   def newAttempt(attemptedResult:Results,db: MySQL,user:User,returnUri:String): Attempt = {
     val expectedResults = db.run(this.queryValidator).asInstanceOf[SetResults]
-    
     val (correct,description) = attemptedResult match {
       case current: UpdateResults => {       
        val correct = this.expectedCount.get == expectedResults.count

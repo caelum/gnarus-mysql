@@ -13,7 +13,6 @@
      			var uri = form.attr("action");
      			$.post(uri,form.serialize(),
      				   function(data){
-     						console.log(data);
 		     				var form = $('<form>');
 		     				form.attr({"action": "@returnUri", "method" : "get", "style":"display:none" });
 		     				var answer = $("<input type='text' name='answer'/>");		     				

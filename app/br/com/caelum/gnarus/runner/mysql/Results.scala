@@ -7,7 +7,7 @@ import java.util.{ArrayList, List}
 
 class SetResults(val rs:ResultSet) extends Results {
 
-  val columns = rs.getMetaData.getColumnCount
+  private val columns = rs.getMetaData.getColumnCount
 
   val lines:List[List[String]] = {
     val list = ListBuffer[List[String]]()
@@ -18,7 +18,7 @@ class SetResults(val rs:ResultSet) extends Results {
     new ArrayList(list)
   }
 
-  val columnNames:List[String] = {
+  private val columnNames:List[String] = {
     val names = for (i <- 1 to columns) yield rs.getMetaData.getColumnName(i)
     new ArrayList(names)
   }

@@ -5,7 +5,7 @@ import models.Attempt
 
 object Databases {
 
-  def mysql(f:MySQL => Attempt):Attempt = {
+  def mysql[T](f:MySQL => T):T = {
     val db = new MySQL(newName)
     try {
       val attempt = f(db)

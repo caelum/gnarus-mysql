@@ -29,10 +29,28 @@ Seq(format.raw/*1.88*/("""
 	  """),_display_(Seq(/*8.5*/helper/*8.11*/.textarea(exerciseForm("queryValidator"),'style -> "width:500px",'rows -> 10, 'cols -> 10))),format.raw/*8.101*/("""
 	  """),_display_(Seq(/*9.5*/helper/*9.11*/.inputText(exerciseForm("expectedResult")))),format.raw/*9.53*/("""	  	 	  
 	  <br/>
-	  <input type="submit" value="Cadastrar" class="botao" /> 
-  	  
-   """)))})),format.raw/*13.5*/("""
-""")))})),format.raw/*14.2*/("""     
+	  <input type="submit" value="Cadastrar" class="botao" />   	  
+   """)))})),format.raw/*12.5*/("""
+   <form action=""""),_display_(Seq(/*13.19*/routes/*13.25*/.Exercises.countQuery)),format.raw/*13.46*/("""" method="post" id="countForm">
+   	Count para saber o retorno do delete ou update
+   	<textarea rows="10" cols="10" style="width:500px" name="query" id="query"></textarea>
+   	<input type="button" value="contar" id="count"/>
+   </form>
+   <script>
+   	$(function()"""),format.raw("""{"""),format.raw/*19.18*/("""
+   		var countForm = $("#countForm")
+   		$("#count").click(function()"""),format.raw("""{"""),format.raw/*21.35*/("""
+   			var sqls = $("#query").val().split(";")
+   			sqls = sqls.join(";\n")
+   			console.log(sqls);
+	   		$.post(countForm.attr("action"),"""),format.raw("""{"""),format.raw/*25.40*/(""""query":sqls"""),format.raw("""}"""),format.raw/*25.53*/(""",function(data)"""),format.raw("""{"""),format.raw/*25.69*/("""
+	   			$("#expectedResult").attr("value",data.count);
+	   		"""),format.raw("""}"""),format.raw/*27.8*/(""")
+   		"""),format.raw("""}"""),format.raw/*28.7*/(""");
+   	"""),format.raw("""}"""),format.raw/*29.6*/(""");
+   </script>
+   
+""")))})),format.raw/*32.2*/("""     
 """))}
     }
     
@@ -45,11 +63,11 @@ Seq(format.raw/*1.88*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Sat May 05 12:18:31 BRT 2012
+                    DATE: Sun May 06 20:45:17 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/novo.scala.html
-                    HASH: b9511edfae555cc101693cf67bff6ffdf05cbafb
-                    MATRIX: 530->3|686->87|719->91|757->121|791->123|824->127|838->133|871->158|904->159|1027->252|1053->270|1080->276|1123->290|1137->296|1217->355|1251->360|1265->366|1377->456|1411->461|1425->467|1488->509|1607->597|1640->599
-                    LINES: 19->1|22->1|23->2|23->2|23->2|24->3|24->3|24->3|24->3|27->6|27->6|27->6|28->7|28->7|28->7|29->8|29->8|29->8|30->9|30->9|30->9|34->13|35->14
+                    HASH: 662f8138e7dd22df3451e52bc445e813d7eb7042
+                    MATRIX: 530->3|686->87|719->91|757->121|791->123|824->127|838->133|871->158|904->159|1027->252|1053->270|1080->276|1123->290|1137->296|1217->355|1251->360|1265->366|1377->456|1411->461|1425->467|1488->509|1606->596|1656->615|1671->621|1714->642|2027->908|2146->980|2334->1121|2394->1134|2457->1150|2565->1212|2619->1220|2673->1228|2725->1249
+                    LINES: 19->1|22->1|23->2|23->2|23->2|24->3|24->3|24->3|24->3|27->6|27->6|27->6|28->7|28->7|28->7|29->8|29->8|29->8|30->9|30->9|30->9|33->12|34->13|34->13|34->13|40->19|42->21|46->25|46->25|46->25|48->27|49->28|50->29|53->32
                     -- GENERATED --
                 */
             

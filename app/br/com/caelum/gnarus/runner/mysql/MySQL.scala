@@ -65,7 +65,7 @@ class MySQL(val name:String) {
   def statement = {
     val st = con.createStatement()
     st.setQueryTimeout(5)
-    st.setMaxRows(20)
+    st.setMaxRows(40)
     st
   }
 
