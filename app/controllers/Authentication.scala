@@ -23,7 +23,7 @@ object Authentication extends Controller{
   private def check(email: String, password: String): Boolean = {
     val possibleUser = UserDAO.findByLogin(email)
     val hashedPassword = Crypto.sign(password)
-    possibleUser.map(_.password == hashedPassword).get
+    possibleUser.map(_.password == hashedPassword).getOrElse(false)
   }
 
   def login = Action { implicit request =>
@@ -32,7 +32,7 @@ object Authentication extends Controller{
 
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
-      formWithErrors => BadRequest(views.html.login(formWithErrors)),
+      formWithErrors => Ok(views.html.login(formWithErrors)),
       user => Redirect(routes.Exercises.list()).withSession(Security.username -> user.login))
   }
 
