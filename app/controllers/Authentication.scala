@@ -24,9 +24,6 @@ object Authentication extends Controller{
   private def check(email: String, password: String): Boolean = {
     val possibleUser = UserDAO.findByLogin(email)
     val hashedPassword = Crypto.sign(password)
-    Logger.info {
-      "A senha passada foi =>"+hashedPassword
-    }
     possibleUser.map(_.password == hashedPassword).getOrElse(false)
   }
 
