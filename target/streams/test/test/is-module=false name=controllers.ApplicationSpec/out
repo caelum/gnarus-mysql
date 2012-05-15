@@ -1,0 +1,11 @@
+[0m[[0minfo[0m] [0mApplicationSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mExercise should[0m
+[0m[[0minfo[0m] [0m[32m+[0m be showed if id,userId and returnUri were passed[0m
+[0m[[0minfo[0m] [0m[32m+[0m be showed with the last attempt query[0m
+[0m[[0minfo[0m] [0m [0m
+[0m[[0minfo[0m] [0m [0m
+[0m[[0minfo[0m] [0mTotal for specification ApplicationSpec[0m
+[0m[[0minfo[0m] [0m[34mFinished in 1 second, 132 ms[0m[0m
+[0m[[0minfo[0m] [0m[34m2 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
