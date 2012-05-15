@@ -16,7 +16,7 @@ object Application extends Controller {
     val userId = request.queryString("attempt[author_id]")(0).toLong
     val returnUri = request.queryString("attempt[return_uri]")(0)
     val exercise = ExerciseDAO.load(id)   
-    Ok(views.html.index(exercise,AttemptDAO.last(User(userId),exercise),returnUri)).withSession("userId" -> userId.toString)
+    Ok(views.html.index(exercise,AttemptDAO.last(User(userId),exercise),returnUri)).withSession(session + ("userId" -> userId.toString))
   }
   
 }
