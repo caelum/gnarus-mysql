@@ -42,7 +42,7 @@ object SQLExecutor extends Controller {
           currentExercise.newAttempt(results, db, User(userId),returnUri)
         }
         Ok(Json.toJson(
-        	Map("query" -> attempt.query,"userId" -> attempt.user.id.toString, "correctness" -> (if(attempt.correct) 100 else 0).toString)
+        	Map("query" -> attempt.query,"userId" -> attempt.user.id.toString, "correctness" -> (if(attempt.correct) 100 else 0).toString,"description" -> attempt.description.getOrElse(""))
            ))
       }
       case None => BadRequest("nao passou o sql")

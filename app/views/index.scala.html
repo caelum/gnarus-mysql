@@ -2,6 +2,7 @@
 
 @main("Welcome to Play 2.0") {
     <form action="@routes.SQLExecutor.execute(exercise.id)" method="post" id="executeForm">
+    	<span id="error" style="display:none;color:red"></span><br/>
     	<input type="hidden" name="returnUri" value="@returnUri"/>    	
     	<textarea name="sql" rows="5" cols="15" style="width:500px">@lastAttempt.map(_.query).getOrElse("")</textarea>
     	<input type="button" id="execute" value="Executar query"/>
@@ -13,16 +14,25 @@
      			var uri = form.attr("action");
      			$.post(uri,form.serialize(),
      				   function(data){
-		     				var form = $('<form>');
-		     				form.attr({"action": "@returnUri", "method" : "get", "style":"display:none" });
-		     				var answer = $("<input type='text' name='answer'/>");		     				
-		     				answer.attr("value",data.query);
-		     				answer.appendTo(form);
-		     				var correctness = $("<input type='text' name='correctness'/>");
-		     				correctness.attr("value",data.correctness)
-		     				correctness.appendTo(form)
-		     				form.appendTo($("body"));
-		     				form.submit();  
+     						var correct = data.correctness == "100" ? true : false;
+     						if(correct){
+			     				var form = $('<form>');
+			     				form.attr({"action": "@returnUri", "method" : "get", "style":"display:none" });
+			     				var answer = $("<input type='text' name='answer'/>");		     				
+			     				answer.attr("value",data.query);
+			     				answer.appendTo(form);
+			     				var correctness = $("<input type='text' name='correctness'/>");
+			     				correctness.attr("value",data.correctness)
+			     				correctness.appendTo(form)
+			     				form.appendTo($("body"));
+			     				form.submit();
+     						}
+     						else{     							
+     							var error = $("#error");
+     							error.html(data.description);
+     							error.show();
+     							
+     						}
      			});
      		});
      	});

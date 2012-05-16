@@ -23,30 +23,40 @@ Seq(format.raw/*1.66*/("""
 
 """),_display_(Seq(/*3.2*/main("Welcome to Play 2.0")/*3.29*/ {_display_(Seq(format.raw/*3.31*/("""
     <form action=""""),_display_(Seq(/*4.20*/routes/*4.26*/.SQLExecutor.execute(exercise.id))),format.raw/*4.59*/("""" method="post" id="executeForm">
-    	<input type="hidden" name="returnUri" value=""""),_display_(Seq(/*5.52*/returnUri)),format.raw/*5.61*/(""""/>    	
-    	<textarea name="sql" rows="5" cols="15" style="width:500px">"""),_display_(Seq(/*6.67*/lastAttempt/*6.78*/.map(_.query).getOrElse(""))),format.raw/*6.105*/("""</textarea>
+    	<span id="error" style="display:none;color:red"></span><br/>
+    	<input type="hidden" name="returnUri" value=""""),_display_(Seq(/*6.52*/returnUri)),format.raw/*6.61*/(""""/>    	
+    	<textarea name="sql" rows="5" cols="15" style="width:500px">"""),_display_(Seq(/*7.67*/lastAttempt/*7.78*/.map(_.query).getOrElse(""))),format.raw/*7.105*/("""</textarea>
     	<input type="button" id="execute" value="Executar query"/>
     </form>
     <script>
-     	$(function()"""),format.raw("""{"""),format.raw/*10.20*/("""
-     		$("#execute").click(function()"""),format.raw("""{"""),format.raw/*11.39*/("""
+     	$(function()"""),format.raw("""{"""),format.raw/*11.20*/("""
+     		$("#execute").click(function()"""),format.raw("""{"""),format.raw/*12.39*/("""
      			var form = $("#executeForm");
      			var uri = form.attr("action");
      			$.post(uri,form.serialize(),
-     				   function(data)"""),format.raw("""{"""),format.raw/*15.28*/("""
-		     				var form = $('<form>');
-		     				form.attr("""),format.raw("""{"""),format.raw/*17.23*/(""""action": """"),_display_(Seq(/*17.35*/returnUri)),format.raw/*17.44*/("""", "method" : "get", "style":"display:none" """),format.raw("""}"""),format.raw/*17.89*/(""");
-		     				var answer = $("<input type='text' name='answer'/>");		     				
-		     				answer.attr("value",data.query);
-		     				answer.appendTo(form);
-		     				var correctness = $("<input type='text' name='correctness'/>");
-		     				correctness.attr("value",data.correctness)
-		     				correctness.appendTo(form)
-		     				form.appendTo($("body"));
-		     				form.submit();  
-     			"""),format.raw("""}"""),format.raw/*26.10*/(""");
-     		"""),format.raw("""}"""),format.raw/*27.9*/(""");
-     	"""),format.raw("""}"""),format.raw/*28.8*/(""");
+     				   function(data)"""),format.raw("""{"""),format.raw/*16.28*/("""
+     						var correct = data.correctness == "100" ? true : false;
+     						if(correct)"""),format.raw("""{"""),format.raw/*18.24*/("""
+			     				var form = $('<form>');
+			     				form.attr("""),format.raw("""{"""),format.raw/*20.24*/(""""action": """"),_display_(Seq(/*20.36*/returnUri)),format.raw/*20.45*/("""", "method" : "get", "style":"display:none" """),format.raw("""}"""),format.raw/*20.90*/(""");
+			     				var answer = $("<input type='text' name='answer'/>");		     				
+			     				answer.attr("value",data.query);
+			     				answer.appendTo(form);
+			     				var correctness = $("<input type='text' name='correctness'/>");
+			     				correctness.attr("value",data.correctness)
+			     				correctness.appendTo(form)
+			     				form.appendTo($("body"));
+			     				form.submit();
+     						"""),format.raw("""}"""),format.raw/*29.13*/("""
+     						else"""),format.raw("""{"""),format.raw/*30.17*/("""     							
+     							var error = $("#error");
+     							error.html(data.description);
+     							error.show();
+     							
+     						"""),format.raw("""}"""),format.raw/*35.13*/("""
+     			"""),format.raw("""}"""),format.raw/*36.10*/(""");
+     		"""),format.raw("""}"""),format.raw/*37.9*/(""");
+     	"""),format.raw("""}"""),format.raw/*38.8*/(""");
     </script>
  """)))})))}
     }
@@ -60,11 +70,11 @@ Seq(format.raw/*1.66*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Tue May 15 17:38:19 BRT 2012
+                    DATE: Wed May 16 15:34:12 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/index.scala.html
-                    HASH: 462f6bc67eedb6afc3fee4ad3f3ac6531500f864
-                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1000->241|1030->250|1135->325|1154->336|1203->363|1370->483|1456->522|1645->664|1750->722|1793->734|1824->743|1916->788|2361->1186|2418->1197|2474->1207
-                    LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|26->5|26->5|27->6|27->6|27->6|31->10|32->11|36->15|38->17|38->17|38->17|38->17|47->26|48->27|49->28
+                    HASH: 14501ce4d7c3d3401b4a44c244fd0c034528a98f
+                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1066->307|1096->316|1201->391|1220->402|1269->429|1436->549|1522->588|1711->730|1849->821|1956->881|1999->893|2030->902|2122->947|2576->1354|2640->1371|2830->1514|2887->1524|2944->1535|3000->1545
+                    LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|27->6|27->6|28->7|28->7|28->7|32->11|33->12|37->16|39->18|41->20|41->20|41->20|41->20|50->29|51->30|56->35|57->36|58->37|59->38
                     -- GENERATED --
                 */
             

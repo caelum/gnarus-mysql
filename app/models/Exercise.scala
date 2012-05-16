@@ -24,7 +24,7 @@ case class Exercise(optionalId:Option[Long],val content:String,val queryValidato
     val (correct,description) = attemptedResult match {
       case current: UpdateResults => {       
        val correct = this.expectedCount.get == expectedResults.count
-       (correct,if(correct) None else Some("O retorno da sua consulta retorno um número de registros diferente do que esperavamos."))
+       (correct,if(correct) None else Some("Sua consulta retornou um número de registros diferente do que esperavamos."))
       }
       
       case returnOfSelect: SetResults => {
@@ -32,7 +32,7 @@ case class Exercise(optionalId:Option[Long],val content:String,val queryValidato
        (correct,if(!correct) Some("O retorno não foi o que estavamos esperando. Tente verificar o select para verificar se não esqueceu de algum detalhe") else None)
       }
       
-      case error:ExceptionResults => (false,Some("Aconteceu alguma errada na execução de sua query. Cheque a consulta para verificar"))
+      case error:ExceptionResults => (false,Some("Um problema aconteceu na execução de sua query. Cheque a consulta para verificar"))
       
       case empty:EmptyResults => (false,Some("A query não retornou nenhum resultado. Tem certeza que especificou corretamente as condições?"))
       
