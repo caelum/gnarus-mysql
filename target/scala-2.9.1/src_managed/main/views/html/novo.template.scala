@@ -27,30 +27,34 @@ Seq(format.raw/*1.88*/("""
 	  <input type="hidden" name="id"  value=""""),_display_(Seq(/*6.44*/exerciseForm("id")/*6.62*/.value)),format.raw/*6.68*/(""""/>	  	  
 	  """),_display_(Seq(/*7.5*/helper/*7.11*/.inputText(exerciseForm("content"),'style -> "width:500px"))),format.raw/*7.70*/("""
 	  """),_display_(Seq(/*8.5*/helper/*8.11*/.textarea(exerciseForm("queryValidator"),'style -> "width:500px",'rows -> 10, 'cols -> 10))),format.raw/*8.101*/("""
-	  """),_display_(Seq(/*9.5*/helper/*9.11*/.inputText(exerciseForm("expectedResult")))),format.raw/*9.53*/("""	  	 	  
+	  """),_display_(Seq(/*9.5*/helper/*9.11*/.inputText(exerciseForm("expectedResult")))),format.raw/*9.53*/("""		  	  	 	  
+	  """),_display_(Seq(/*10.5*/helper/*10.11*/.textarea(exerciseForm("setupQuery"),'style -> "width:1000px",'rows -> 20, 'cols -> 20))),format.raw/*10.98*/("""	  
 	  <br/>
-	  <input type="submit" value="Cadastrar" class="botao" />   	  
-   """)))})),format.raw/*12.5*/("""
-   <form action=""""),_display_(Seq(/*13.19*/routes/*13.25*/.Exercises.countQuery)),format.raw/*13.46*/("""" method="post" id="countForm">
-   	Count para saber o retorno do delete ou update
+	  <input type="submit" value="Cadastrar" class="botao" id="cadastro"/>   	  
+   """)))})),format.raw/*13.5*/("""
+   <form action=""""),_display_(Seq(/*14.19*/routes/*14.25*/.Exercises.countQuery)),format.raw/*14.46*/("""" method="post" id="countForm">
+   	Faça o count para saber quantos resultados vão vir. Antes de executar aqui, lembre de escrever no campo de
+   	setup query, o sql para gerar as tabelas e inserir no banco.   	
    	<textarea rows="10" cols="10" style="width:500px" name="query" id="query"></textarea>
    	<input type="button" value="contar" id="count"/>
    </form>
    <script>
-   	$(function()"""),format.raw("""{"""),format.raw/*19.18*/("""
+   	$(function()"""),format.raw("""{"""),format.raw/*21.18*/("""
    		var countForm = $("#countForm")
-   		$("#count").click(function()"""),format.raw("""{"""),format.raw/*21.35*/("""
-   			var sqls = $("#query").val().split(";")
-   			sqls = sqls.join(";\n")
-   			console.log(sqls);
-	   		$.post(countForm.attr("action"),"""),format.raw("""{"""),format.raw/*25.40*/(""""query":sqls"""),format.raw("""}"""),format.raw/*25.53*/(""",function(data)"""),format.raw("""{"""),format.raw/*25.69*/("""
+   		$("#count").click(function()"""),format.raw("""{"""),format.raw/*23.35*/("""
+   			var sqls = joinSQLs($("#query").val())   			
+   			var setupQuery = joinSQLs($("#setupQuery").val());   			
+	   		$.post(countForm.attr("action"),"""),format.raw("""{"""),format.raw/*26.40*/(""""query":sqls,"setupQuery":setupQuery"""),format.raw("""}"""),format.raw/*26.77*/(""",function(data)"""),format.raw("""{"""),format.raw/*26.93*/("""
 	   			$("#expectedResult").attr("value",data.count);
-	   		"""),format.raw("""}"""),format.raw/*27.8*/(""")
-   		"""),format.raw("""}"""),format.raw/*28.7*/(""");
-   	"""),format.raw("""}"""),format.raw/*29.6*/(""");
+	   		"""),format.raw("""}"""),format.raw/*28.8*/(""")
+   		"""),format.raw("""}"""),format.raw/*29.7*/(""");
+   	"""),format.raw("""}"""),format.raw/*30.6*/(""");
+   	function joinSQLs(sql)"""),format.raw("""{"""),format.raw/*31.28*/("""   		
+   		return sql.split(";").join(";\n")
+   	"""),format.raw("""}"""),format.raw/*33.6*/("""
    </script>
    
-""")))})),format.raw/*32.2*/("""     
+""")))})),format.raw/*36.2*/("""     
 """))}
     }
     
@@ -63,11 +67,11 @@ Seq(format.raw/*1.88*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Wed May 16 15:34:13 BRT 2012
+                    DATE: Thu May 17 18:00:41 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/novo.scala.html
-                    HASH: 662f8138e7dd22df3451e52bc445e813d7eb7042
-                    MATRIX: 530->3|686->87|719->91|757->121|791->123|824->127|838->133|871->158|904->159|1027->252|1053->270|1080->276|1123->290|1137->296|1217->355|1251->360|1265->366|1377->456|1411->461|1425->467|1488->509|1606->596|1656->615|1671->621|1714->642|2027->908|2146->980|2334->1121|2394->1134|2457->1150|2565->1212|2619->1220|2673->1228|2725->1249
-                    LINES: 19->1|22->1|23->2|23->2|23->2|24->3|24->3|24->3|24->3|27->6|27->6|27->6|28->7|28->7|28->7|29->8|29->8|29->8|30->9|30->9|30->9|33->12|34->13|34->13|34->13|40->19|42->21|46->25|46->25|46->25|48->27|49->28|50->29|53->32
+                    HASH: 31f90d1cf008c3cb6040656748cb89b373b74d5d
+                    MATRIX: 530->3|686->87|719->91|757->121|791->123|824->127|838->133|871->158|904->159|1027->252|1053->270|1080->276|1123->290|1137->296|1217->355|1251->360|1265->366|1377->456|1411->461|1425->467|1488->509|1535->526|1550->532|1659->619|1785->714|1835->733|1850->739|1893->760|2335->1155|2454->1227|2655->1381|2739->1418|2802->1434|2910->1496|2964->1504|3018->1512|3095->1542|3191->1592|3241->1611
+                    LINES: 19->1|22->1|23->2|23->2|23->2|24->3|24->3|24->3|24->3|27->6|27->6|27->6|28->7|28->7|28->7|29->8|29->8|29->8|30->9|30->9|30->9|31->10|31->10|31->10|34->13|35->14|35->14|35->14|42->21|44->23|47->26|47->26|47->26|49->28|50->29|51->30|52->31|54->33|57->36
                     -- GENERATED --
                 */
             

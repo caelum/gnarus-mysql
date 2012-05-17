@@ -1,6 +1,6 @@
 // @SOURCE:/Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/conf/routes
-// @HASH:d2b3be36712138ecd6511fc2a6fe3c76e16ae40b
-// @DATE:Wed May 16 15:33:55 BRT 2012
+// @HASH:241704c39356c41f46be6c43f4cee36d9879bb3f
+// @DATE:Thu May 17 15:42:14 BRT 2012
 
 package controllers;
 

@@ -10,7 +10,7 @@ POST 	/exercise					controllers.Exercises.create
 GET 	/exercise/:id				controllers.Exercises.load(id:Long)
 GET 	/exercise					controllers.Exercises.list
 POST 	/exercise/update			controllers.Exercises.update
-POST 	/exercise/countQuery 		controllers.Exercises.countQuery
+POST 	/exercise/countQuery		controllers.Exercises.countQuery
 GET 	/authenticate				controllers.Authentication.login
 POST 	/authenticate				controllers.Authentication.authenticate
 GET 	/authenticate/logout		controllers.Authentication.logout

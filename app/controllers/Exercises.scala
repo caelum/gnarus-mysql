@@ -45,12 +45,14 @@ object Exercises extends Controller with Secured {
       "id" -> optional(longNumber),
       "content" -> text,
       "queryValidator" -> text,
-      "expectedResult" -> optional(number))(
+      "expectedResult" -> optional(number),
+      "setupQuery" -> text)(
         Exercise.apply)(
-          Exercise.unapply))
+        Exercise.unapply))
 
   def form = withAuth { implicit request =>
-      Ok(views.html.novo(exerciseForm))
+      var filledForm = exerciseForm.fill(new Exercise(baseSql))
+      Ok(views.html.novo(filledForm))
   }
 
   def load(id: Long) = withAuth { implicit request =>
@@ -79,13 +81,14 @@ object Exercises extends Controller with Secured {
       })
   }
 
-  def countQuery = withAuth { implicit request =>
+  def countQuery = withAuth { implicit request =>    
     request.body.asFormUrlEncoded match {
       case Some(params) => {
-        val query = params.get("query").get(0)
+        val countQuery = params.get("query").get(0)
+        val setupQuery = params.get("setupQuery").get(0)       
         val count = Databases.mysql { db =>
-          db.run(SQLExecutor.baseSql)
-          val countResult = db.run(query).asInstanceOf[SetResults]
+          db.run(setupQuery)
+          val countResult = db.run(countQuery).asInstanceOf[SetResults]
           countResult.lines.get(0).get(0).value.toInt
         }
         Ok(Json.toJson(
@@ -95,4 +98,17 @@ object Exercises extends Controller with Secured {
     }
 
   }
+  
+  def baseSql = """CREATE TABLE IF NOT EXISTS COMPRAS (
+		  ID int NOT NULL AUTO_INCREMENT,
+		  VALOR decimal(10,2),
+		  DATA datetime,
+		  OBSERVACOES text,
+		  RECEBIDO tinyint(1),
+		  PRIMARY KEY (ID)
+		);
+		create table CONTAS (ID int not null auto_increment primary key, OBSERVACOES text);		    
+		  """  
+   
+
 }

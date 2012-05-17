@@ -51,6 +51,7 @@ class MySQL(val name:String) {
       }
     } catch {
       case ex:SQLException => {
+       ex.printStackTrace()
        new ExceptionResults(ex) 
       }
     }    

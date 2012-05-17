@@ -10,11 +10,15 @@ import br.com.caelum.gnarus.runner.User
 import br.com.caelum.gnarus.runner.mysql.ExceptionResults
 import br.com.caelum.gnarus.runner.mysql.EmptyResults
 
-case class Exercise(optionalId:Option[Long],val content:String,val queryValidator:String,expectedCount:Option[Int]){
+case class Exercise(optionalId:Option[Long],val content:String,val queryValidator:String,expectedCount:Option[Int],setupQuery:String){
   
   def this(id:Long) = {
-    this(Some(id),null,null,None)
+    this(Some(id),null,null,None,null)
   }
+  
+  def this(setupQuery:String) = {
+    this(None,null,null,None,setupQuery)
+  }  
   
   var id:Long = _
   optionalId.map(id => this.id = id)
@@ -51,22 +55,25 @@ object ExerciseDAO {
     get[Long]("id") ~
       get[String]("content") ~
       get[String]("queryValidator") ~
-      get[Option[Int]]("expectedResult") map {
-        case id ~ content ~ queryValidator ~ expectedCount => Exercise(Some(id),content,queryValidator,expectedCount)
+      get[Option[Int]]("expectedResult") ~
+      get[String]("setupQuery") map {
+        case id ~ content ~ queryValidator ~ expectedCount ~ setupQuery => Exercise(Some(id),content,queryValidator,expectedCount,setupQuery)
         case _ => throw new RuntimeException("oops!!")
       }
   }  
   def save(exercise:Exercise):Unit = {
 	  DB.withConnection { implicit c =>
-	    SQL("insert into Exercise(content,queryValidator,expectedResult) values({content},{queryValidator},{expectedResult})")
-	      .on("content" -> exercise.content, "queryValidator" -> exercise.queryValidator, "expectedResult" -> exercise.expectedCount).executeUpdate
+	    SQL("insert into Exercise(content,queryValidator,expectedResult,setupQuery) values({content},{queryValidator},{expectedResult},{setupQuery})")
+	      .on("content" -> exercise.content, "queryValidator" -> exercise.queryValidator, 
+	          "expectedResult" -> exercise.expectedCount, "setupQuery" -> exercise.setupQuery).executeUpdate
 	  }
   }
   
   def update(exercise:Exercise):Unit = {
 	  DB.withConnection { implicit c =>
-	    SQL("update Exercise set content={content},queryValidator={queryValidator},expectedResult = {expectedResult} where id={id}")
-	      .on("id" -> exercise.id,"content" -> exercise.content, "queryValidator" -> exercise.queryValidator, "expectedResult" -> exercise.expectedCount).executeUpdate
+	    SQL("update Exercise set content={content},queryValidator={queryValidator},expectedResult = {expectedResult}, setupQuery = {setupQuery} where id={id}")
+	      .on("id" -> exercise.id,"content" -> exercise.content, "queryValidator" -> exercise.queryValidator, 
+	          "expectedResult" -> exercise.expectedCount,"setupQuery" -> exercise.setupQuery).executeUpdate
 	  }
   }  
   

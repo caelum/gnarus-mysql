@@ -6,12 +6,14 @@
 	  <input type="hidden" name="id"  value="@exerciseForm("id").value"/>	  	  
 	  @helper.inputText(exerciseForm("content"),'style -> "width:500px")
 	  @helper.textarea(exerciseForm("queryValidator"),'style -> "width:500px",'rows -> 10, 'cols -> 10)
-	  @helper.inputText(exerciseForm("expectedResult"))	  	 	  
+	  @helper.inputText(exerciseForm("expectedResult"))		  	  	 	  
+	  @helper.textarea(exerciseForm("setupQuery"),'style -> "width:1000px",'rows -> 20, 'cols -> 20)	  
 	  <br/>
-	  <input type="submit" value="Cadastrar" class="botao" />   	  
+	  <input type="submit" value="Cadastrar" class="botao" id="cadastro"/>   	  
    }
    <form action="@routes.Exercises.countQuery" method="post" id="countForm">
-   	Count para saber o retorno do delete ou update
+   	Faça o count para saber quantos resultados vão vir. Antes de executar aqui, lembre de escrever no campo de
+   	setup query, o sql para gerar as tabelas e inserir no banco.   	
    	<textarea rows="10" cols="10" style="width:500px" name="query" id="query"></textarea>
    	<input type="button" value="contar" id="count"/>
    </form>
@@ -19,14 +21,16 @@
    	$(function(){
    		var countForm = $("#countForm")
    		$("#count").click(function(){
-   			var sqls = $("#query").val().split(";")
-   			sqls = sqls.join(";\n")
-   			console.log(sqls);
-	   		$.post(countForm.attr("action"),{"query":sqls},function(data){
+   			var sqls = joinSQLs($("#query").val())   			
+   			var setupQuery = joinSQLs($("#setupQuery").val());   			
+	   		$.post(countForm.attr("action"),{"query":sqls,"setupQuery":setupQuery},function(data){
 	   			$("#expectedResult").attr("value",data.count);
 	   		})
    		});
    	});
+   	function joinSQLs(sql){   		
+   		return sql.split(";").join(";\n")
+   	}
    </script>
    
 }     
