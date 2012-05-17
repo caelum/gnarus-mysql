@@ -11,6 +11,8 @@ import models.Attempt
 import br.com.caelum.gnarus.runner.User
 
 class ApplicationSpec extends Specification{
+  
+  
 	"Exercise" should {
 	  "be showed if id,userId and returnUri were passed" in {
 	    running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {

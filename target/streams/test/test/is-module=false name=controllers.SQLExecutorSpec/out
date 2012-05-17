@@ -1,0 +1,11 @@
+[0m[[0minfo[0m] [0mSQLExecutorSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mRunning an update query should[0m
+[0m[[0minfo[0m] [0m[32m+[0m return correctness 100 for correct answer[0m
+[0m[[0minfo[0m] [0m[32m+[0m return correctness 0 for incorrect answer[0m
+[0m[[0minfo[0m] [0m [0m
+[0m[[0minfo[0m] [0m [0m
+[0m[[0minfo[0m] [0mTotal for specification SQLExecutorSpec[0m
+[0m[[0minfo[0m] [0m[34mFinished in 1 second, 565 ms[0m[0m
+[0m[[0minfo[0m] [0m[34m2 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m

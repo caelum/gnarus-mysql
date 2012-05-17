@@ -1,0 +1,51 @@
+<controllers.SQLExecutorSpec-results timestamp="1337199805941"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:15)" id="-1529107159"><stats expectations="1" examples="1" errors="1" time="931"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337199805946"><stats expectations="1" examples="1" errors="1" time="931"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337201779490"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:15)" id="-1529107159"><stats expectations="1" examples="1" errors="1" time="1105"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337201779496"><stats expectations="1" examples="1" errors="1" time="1105"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337201834352"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:15)" id="-1529107159"><stats expectations="1" examples="1" errors="1" time="855"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337201834357"><stats expectations="1" examples="1" errors="1" time="855"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337201893254"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:15)" id="-1529107159"><stats expectations="1" examples="1" errors="1" time="58"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337201893256"><stats expectations="1" examples="1" errors="1" time="58"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337202033333"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:15)" id="-1529107159"><stats expectations="1" examples="1" errors="1" time="50"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337202033336"><stats expectations="1" examples="1" errors="1" time="50"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337202069582"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:15)" id="-1529107159"><stats expectations="1" examples="1" errors="1" time="68"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337202069585"><stats expectations="1" examples="1" errors="1" time="68"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337203740106"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:23)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="88"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337203740110"><stats expectations="1" examples="1" failures="1" time="88"><trend><stats failures="1" errors="-1" time="156"></stats></trend></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337204237429"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:25)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="1471"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337204237434"><stats expectations="1" examples="1" failures="1" time="1471"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337204321673"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:25)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="1390"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337204321684"><stats expectations="1" examples="1" failures="1" time="1390"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337204531776"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:25)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="1365"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337204531802"><stats expectations="1" examples="1" failures="1" time="1365"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337204708116"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:26)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="1621"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337204708123"><stats expectations="1" examples="1" failures="1" time="1621"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337204809002"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:26)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="1442"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337204809009"><stats expectations="1" examples="1" failures="1" time="1442"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337205073321"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:26)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="597"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337205073327"><stats expectations="1" examples="1" failures="1" time="597"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337205100026"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:26)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="2896"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337205100032"><stats expectations="1" examples="1" failures="1" time="2896"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337205239579"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:26)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="2019"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337205239617"><stats expectations="1" examples="1" failures="1" time="2019"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-results timestamp="1337205549354"><result location="controllers.SQLExecutorSpec (SQLExecutorSpec.scala:27)" id="-1529107159"><stats expectations="1" examples="1" failures="1" time="1413"></stats></result>
+</controllers.SQLExecutorSpec-results>
+<controllers.SQLExecutorSpec-stats timestamp="1337205549367"><stats expectations="1" examples="1" failures="1" time="1413"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-stats timestamp="1337205647421"><stats expectations="1" examples="1" successes="1" time="585"><trend><stats failures="-1" successes="1" time="1998"></stats></trend></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-stats timestamp="1337274809677"><stats expectations="1" examples="1" successes="1" time="1850"></stats></controllers.SQLExecutorSpec-stats>
+<controllers.SQLExecutorSpec-stats timestamp="1337274983997"><stats expectations="2" examples="2" successes="2" time="1565"><trend><stats expectations="1" examples="1" successes="1" time="3415"></stats></trend></stats></controllers.SQLExecutorSpec-stats>
