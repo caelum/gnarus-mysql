@@ -12,6 +12,7 @@ import play.api.mvc.Session
 import play.api.mvc.Cookies
 import play.api.libs.json.Json
 import play.api.libs.json.JsValue
+import infra.BaseSql
 
 class SQLExecutorSpec extends Specification {
 
@@ -26,27 +27,28 @@ class SQLExecutorSpec extends Specification {
   "Running an update query" should {
     "return correctness 100 for correct answer" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
-        ExerciseDAO.save(Exercise(None, "select * from Compras", "select * from Compras", Some(1)))
-        val lastAttempt = Attempt(None, ExerciseDAO.load(1), "select * from Compras", User(1), true, None, "http://online.caelum.com.br")
-        AttemptDAO.save(lastAttempt)
+        ExerciseDAO.save(Exercise(None, "select * from Compras", "select * from Compras", Some(1), BaseSql()))               
         
         val Some(result) = routeAndCall(executeSqlRequest("select * from Compras"))
         val content = contentAsString(result)
         val json = Json.parse(content)
+        
         json \ "correctness" must beEqualTo(Json.toJson("100"))
+        AttemptDAO.last(User(1),new Exercise(1)).get.query must beEqualTo("select * from Compras".toUpperCase())
       }
     }
     
     "return correctness 0 for incorrect answer" in {
       running(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
-        ExerciseDAO.save(Exercise(None, "select * from Compras", "select * from Compras", Some(1)))
-        val lastAttempt = Attempt(None, ExerciseDAO.load(1), "select * from Compras", User(1), true, None, "http://online.caelum.com.br")
-        AttemptDAO.save(lastAttempt)
+        ExerciseDAO.save(Exercise(None, "select * from Compras", "select * from Compras", Some(1),BaseSql()))        
         
         val Some(result) = routeAndCall(executeSqlRequest("select * from Compras order by data desc"))
         val content = contentAsString(result)
         val json = Json.parse(content)
+        
+        
         json \ "correctness" must beEqualTo(Json.toJson("0"))
+        AttemptDAO.last(User(1),new Exercise(1)).get.query must beEqualTo("select * from Compras order by data desc".toUpperCase())
       }
     }    
   }  

@@ -70,7 +70,7 @@ Seq(format.raw/*1.66*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Wed May 16 15:34:12 BRT 2012
+                    DATE: Thu May 17 18:31:51 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/index.scala.html
                     HASH: 14501ce4d7c3d3401b4a44c244fd0c034528a98f
                     MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1066->307|1096->316|1201->391|1220->402|1269->429|1436->549|1522->588|1711->730|1849->821|1956->881|1999->893|2030->902|2122->947|2576->1354|2640->1371|2830->1514|2887->1524|2944->1535|3000->1545
