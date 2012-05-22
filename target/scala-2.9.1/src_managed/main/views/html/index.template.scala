@@ -26,7 +26,7 @@ Seq(format.raw/*1.66*/("""
     	<span id="error" style="display:none;color:red"></span><br/>
     	<input type="hidden" name="returnUri" value=""""),_display_(Seq(/*6.52*/returnUri)),format.raw/*6.61*/(""""/>    	
     	<textarea name="sql" rows="5" cols="15" style="width:500px">"""),_display_(Seq(/*7.67*/lastAttempt/*7.78*/.map(_.query).getOrElse(""))),format.raw/*7.105*/("""</textarea>
-    	<input type="button" id="execute" value="Executar query"/>
+    	<input type="button" id="execute" value="Executar query"/> | <input type="button" id="ignore" value="Ignorar"/> 
     </form>
     <script>
      	$(function()"""),format.raw("""{"""),format.raw/*11.20*/("""
@@ -56,7 +56,10 @@ Seq(format.raw/*1.66*/("""
      						"""),format.raw("""}"""),format.raw/*35.13*/("""
      			"""),format.raw("""}"""),format.raw/*36.10*/(""");
      		"""),format.raw("""}"""),format.raw/*37.9*/(""");
-     	"""),format.raw("""}"""),format.raw/*38.8*/(""");
+     	  $("#ignore").click(function()"""),format.raw("""{"""),format.raw/*38.39*/("""
+     		 window.location.href = """"),_display_(Seq(/*39.34*/{returnUri + "?solution=skipped"})),format.raw/*39.67*/("""" 
+     	  """),format.raw("""}"""),format.raw/*40.10*/(""");	
+     	"""),format.raw("""}"""),format.raw/*41.8*/(""");
     </script>
  """)))})))}
     }
@@ -70,11 +73,11 @@ Seq(format.raw/*1.66*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu May 17 18:31:51 BRT 2012
+                    DATE: Tue May 22 18:54:11 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/index.scala.html
-                    HASH: 14501ce4d7c3d3401b4a44c244fd0c034528a98f
-                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1066->307|1096->316|1201->391|1220->402|1269->429|1436->549|1522->588|1711->730|1849->821|1956->881|1999->893|2030->902|2122->947|2576->1354|2640->1371|2830->1514|2887->1524|2944->1535|3000->1545
-                    LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|27->6|27->6|28->7|28->7|28->7|32->11|33->12|37->16|39->18|41->20|41->20|41->20|41->20|50->29|51->30|56->35|57->36|58->37|59->38
+                    HASH: a710c6b9f55b50ec2d76c0de82003fad329d26a6
+                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1066->307|1096->316|1201->391|1220->402|1269->429|1490->603|1576->642|1765->784|1903->875|2010->935|2053->947|2084->956|2176->1001|2630->1408|2694->1425|2884->1568|2941->1578|2998->1589|3086->1630|3151->1664|3206->1697|3265->1709|3322->1720
+                    LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|27->6|27->6|28->7|28->7|28->7|32->11|33->12|37->16|39->18|41->20|41->20|41->20|41->20|50->29|51->30|56->35|57->36|58->37|59->38|60->39|60->39|61->40|62->41
                     -- GENERATED --
                 */
             
