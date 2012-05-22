@@ -4,7 +4,7 @@
     <form action="@routes.SQLExecutor.execute(exercise.id)" method="post" id="executeForm">
     	<span id="error" style="display:none;color:red"></span><br/>
     	<input type="hidden" name="returnUri" value="@returnUri"/>    	
-    	<textarea name="sql" rows="5" cols="15" style="width:500px">@lastAttempt.map(_.query).getOrElse("")</textarea>
+    	<textarea name="sql" rows="5" cols="15" style="width:500px">@lastAttempt.map(_.query).getOrElse("")</textarea><br/>
     	<input type="button" id="execute" value="Executar query"/> | <input type="button" id="ignore" value="Ignorar"/> 
     </form>
     <script>
