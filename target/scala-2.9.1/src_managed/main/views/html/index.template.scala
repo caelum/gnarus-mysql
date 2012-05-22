@@ -25,7 +25,7 @@ Seq(format.raw/*1.66*/("""
     <form action=""""),_display_(Seq(/*4.20*/routes/*4.26*/.SQLExecutor.execute(exercise.id))),format.raw/*4.59*/("""" method="post" id="executeForm">
     	<span id="error" style="display:none;color:red"></span><br/>
     	<input type="hidden" name="returnUri" value=""""),_display_(Seq(/*6.52*/returnUri)),format.raw/*6.61*/(""""/>    	
-    	<textarea name="sql" rows="5" cols="15" style="width:500px">"""),_display_(Seq(/*7.67*/lastAttempt/*7.78*/.map(_.query).getOrElse(""))),format.raw/*7.105*/("""</textarea>
+    	<textarea name="sql" rows="5" cols="15" style="width:500px">"""),_display_(Seq(/*7.67*/lastAttempt/*7.78*/.map(_.query).getOrElse(""))),format.raw/*7.105*/("""</textarea><br/>
     	<input type="button" id="execute" value="Executar query"/> | <input type="button" id="ignore" value="Ignorar"/> 
     </form>
     <script>
@@ -73,10 +73,10 @@ Seq(format.raw/*1.66*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Tue May 22 18:54:11 BRT 2012
+                    DATE: Tue May 22 18:59:33 BRT 2012
                     SOURCE: /Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/app/views/index.scala.html
-                    HASH: a710c6b9f55b50ec2d76c0de82003fad329d26a6
-                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1066->307|1096->316|1201->391|1220->402|1269->429|1490->603|1576->642|1765->784|1903->875|2010->935|2053->947|2084->956|2176->1001|2630->1408|2694->1425|2884->1568|2941->1578|2998->1589|3086->1630|3151->1664|3206->1697|3265->1709|3322->1720
+                    HASH: 6fcd899503db11faaf0121cdb9f3cb6f76ca71f8
+                    MATRIX: 530->1|666->65|698->68|733->95|767->97|817->117|831->123|885->156|1066->307|1096->316|1201->391|1220->402|1269->429|1495->608|1581->647|1770->789|1908->880|2015->940|2058->952|2089->961|2181->1006|2635->1413|2699->1430|2889->1573|2946->1583|3003->1594|3091->1635|3156->1669|3211->1702|3270->1714|3327->1725
                     LINES: 19->1|22->1|24->3|24->3|24->3|25->4|25->4|25->4|27->6|27->6|28->7|28->7|28->7|32->11|33->12|37->16|39->18|41->20|41->20|41->20|41->20|50->29|51->30|56->35|57->36|58->37|59->38|60->39|60->39|61->40|62->41
                     -- GENERATED --
                 */

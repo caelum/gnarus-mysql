@@ -1,6 +1,6 @@
 // @SOURCE:/Users/albertoluizsouza/ambiente/desenvolvimento/scala/runner-exercise/conf/routes
 // @HASH:241704c39356c41f46be6c43f4cee36d9879bb3f
-// @DATE:Tue May 22 18:54:08 BRT 2012
+// @DATE:Tue May 22 18:59:30 BRT 2012
 
 import play.core._
 import play.core.Router._
